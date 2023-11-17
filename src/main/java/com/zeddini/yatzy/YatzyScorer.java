@@ -10,9 +10,13 @@ public class YatzyScorer {
 	 * @return
 	 */
 	public static int scoreChance(int[] dice) {
-		// TODO Auto-generated method stub
-		return 0;
+	    int sum = 0;
+	    for (int die : dice) {
+	        sum += die;
+	    }
+	    return sum;
 	}
+
 
     // Method to score for Yatzy
 
@@ -23,9 +27,15 @@ public class YatzyScorer {
 	 * @return
 	 */
 	public static int scoreYatzy(int[] dice) {
-		// TODO Auto-generated method stub
-		return 0;
+	    int firstValue = dice[0];
+	    for (int die : dice) {
+	        if (die != firstValue) {
+	            return 0;
+	        }
+	    }
+	    return 50;
 	}
+
 
 	// Methods for Ones, Twos, Threes, Fours, Fives, Sixes
 	/**
@@ -36,9 +46,15 @@ public class YatzyScorer {
 	 * @return
 	 */
 	public static int scoreSingles(int[] dice, int number) {
-		// TODO Auto-generated method stub
-		return 0;
+	    int sum = 0;
+	    for (int die : dice) {
+	        if (die == number) {
+	            sum += die;
+	        }
+	    }
+	    return sum;
 	}
+
 
 	// Method for Pair
 	/**
