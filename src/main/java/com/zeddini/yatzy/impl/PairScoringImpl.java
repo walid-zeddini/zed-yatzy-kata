@@ -1,18 +1,36 @@
 package com.zeddini.yatzy.impl;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import com.zeddini.yatzy.IScoringStrategy;
 
+/**
+ * Implémentation de la stratégie de scoring pour la catégorie "Pair" dans le jeu Yatzy.
+ * Cette stratégie calcule le score en trouvant la paire la plus élevée parmi les dés lancés.
+ */
 public class PairScoringImpl implements IScoringStrategy {
+
+    /**
+     * Calcule le score pour la catégorie "Pair" en fonction des dés fournis.
+     * Recherche la paire la plus élevée parmi les dés et retourne sa somme. Si aucune paire n'est trouvée,
+     * retourne 0.
+     *
+     * @param dice Un tableau d'entiers représentant les dés lancés.
+     * @return Le score calculé, qui est la somme des dés de la paire la plus élevée, ou 0 si aucune paire n'est trouvée.
+     */
     @Override
     public int score(int[] dice) {
-        Arrays.sort(dice);
-        for (int i = dice.length - 1; i > 0; i--) {
-            if (dice[i] == dice[i - 1]) {
-                return dice[i] * 2;
-            }
-        }
-        return 0;
+        return Arrays.stream(dice)
+                .boxed()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream()
+                .filter(e -> e.getValue() >= 2)
+                .max(Comparator.comparingInt(Map.Entry::getKey))
+                .map(e -> e.getKey() * 2)
+                .orElse(0);
     }
 }
