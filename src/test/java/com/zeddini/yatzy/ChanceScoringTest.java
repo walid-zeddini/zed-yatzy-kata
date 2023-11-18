@@ -21,13 +21,17 @@ public class ChanceScoringTest {
      * @param dice Le tableau de dés pour le test.
      * @param expectedScore Le score attendu pour la combinaison de dés donnée.
      */
-    @ParameterizedTest
+	@ParameterizedTest
     @MethodSource("provideDiceForChance")
     public void testScoreChance(int[] dice, int expectedScore) {
+        // Arrange
         IScoringStrategy chanceScoring = new ChanceScoringImpl();
+
+        // Act & Assert
         assertEquals(expectedScore, chanceScoring.score(dice),
-                "Le score calculé doit correspondre à la somme attendue");
+                "Le score calculé pour la combinaison de dés doit être égal à la somme des valeurs des dés.");
     }
+ 
 
     /**
      * Fournit un flux de données pour les tests paramétrés, avec différentes combinaisons de dés
@@ -35,19 +39,25 @@ public class ChanceScoringTest {
      * 
      * @return Un flux d'arguments contenant des tableaux de dés et les scores attendus.
      */
+
     private static Stream<Arguments> provideDiceForChance() {
         return Stream.of(
-        		Arguments.of(new int[] { 1, 2, 3, 4, 5 }, 15), // Cas typique
-				Arguments.of(new int[] { 2, 3, 4, 5, 6 }, 20), // Un autre cas typique
-				Arguments.of(new int[] { 1, 1, 1, 1, 1 }, 5), // Tous les dés identiques (minimum)
-				Arguments.of(new int[] { 6, 6, 6, 6, 6 }, 30), // Tous les dés identiques (maximum)
-				Arguments.of(new int[] { 4, 4, 4, 4, 4 }, 20), // Autre cas avec tous les dés identiques
-				Arguments.of(new int[] { 3, 3, 3, 3, 3 }, 15), // Autre cas avec tous les dés identiques
-				Arguments.of(new int[] { 2, 2, 2, 2, 2 }, 10), // Autre cas avec tous les dés identiques
-				Arguments.of(new int[] { 1, 2, 1, 2, 1 }, 7), // Combinaison mixte
-				Arguments.of(new int[] { 2, 3, 2, 3, 2 }, 12), // Autre combinaison mixte
-				Arguments.of(new int[] { 4, 5, 5, 5, 4 }, 23), // Combinaison avec des répétitions
-				Arguments.of(new int[] { 3, 4, 3, 4, 3 }, 17) // Autre combinaison avec des répétitions
+            Arguments.of(new int[] { 1, 2, 3, 4, 5 }, 15), // Cas typique avec des dés différents
+            Arguments.of(new int[] { 2, 3, 4, 5, 6 }, 20), // Autre cas typique avec des dés différents
+            Arguments.of(new int[] { 1, 1, 1, 1, 1 }, 5),  // Tous les dés identiques (minimum)
+            Arguments.of(new int[] { 6, 6, 6, 6, 6 }, 30), // Tous les dés identiques (maximum)
+            Arguments.of(new int[] { 4, 4, 4, 4, 4 }, 20), // Autre cas avec tous les dés identiques
+            Arguments.of(new int[] { 3, 3, 3, 3, 3 }, 15), // Autre cas avec tous les dés identiques
+            Arguments.of(new int[] { 2, 2, 2, 2, 2 }, 10), // Autre cas avec tous les dés identiques
+            Arguments.of(new int[] { 1, 2, 1, 2, 1 }, 7),  // Combinaison mixte
+            Arguments.of(new int[] { 2, 3, 2, 3, 2 }, 12), // Autre combinaison mixte
+            Arguments.of(new int[] { 4, 5, 5, 5, 4 }, 23), // Combinaison avec des répétitions
+            Arguments.of(new int[] { 3, 4, 3, 4, 3 }, 17), // Autre combinaison avec des répétitions
+            // Autres cas de test
+            Arguments.of(new int[] { 1, 2, 3, 3, 2 }, 11), // Combinaison mixte avec répétitions
+            Arguments.of(new int[] { 2, 4, 4, 5, 5 }, 20), // Combinaison avec deux paires
+            Arguments.of(new int[] { 1, 1, 2, 3, 4 }, 11), // Combinaison avec une paire
+            Arguments.of(new int[] { 5, 5, 5, 5, 1 }, 21)  // Combinaison avec quatre d'une sorte
         );
     }
 }

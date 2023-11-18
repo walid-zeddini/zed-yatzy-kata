@@ -15,10 +15,12 @@ public class SinglesScoringTest {
         // Testing for Ones
         IScoringStrategy onesScoring = new SinglesScoringImpl(1);
         assertEquals(2, onesScoring.score(new int[]{1, 2, 1, 4, 5})); // Deux ones
+        assertEquals(0, onesScoring.score(new int[]{3, 3, 3, 4, 5})); // Aucun ones
 
         // Testing for Twos
         IScoringStrategy twosScoring = new SinglesScoringImpl(2);
         assertEquals(4, twosScoring.score(new int[]{1, 2, 1, 2, 5})); // Deux twos (2 + 2)
+        assertEquals(4, twosScoring.score(new int[]{2, 3, 2, 5, 1})); // Deux twos (2 + 2)
 
         // Testing for Threes
         IScoringStrategy threesScoring = new SinglesScoringImpl(3);
@@ -27,6 +29,7 @@ public class SinglesScoringTest {
         // Testing for Fours
         IScoringStrategy foursScoring = new SinglesScoringImpl(4);
         assertEquals(12, foursScoring.score(new int[]{3, 4, 4, 4, 5})); // Trois fours (4 + 4 + 4)
+        assertEquals(8, foursScoring.score(new int[]{1, 1, 2, 4, 4})); // Trois fours (4 + 4)
 
         // Testing for Fives
         IScoringStrategy fivesScoring = new SinglesScoringImpl(5);
