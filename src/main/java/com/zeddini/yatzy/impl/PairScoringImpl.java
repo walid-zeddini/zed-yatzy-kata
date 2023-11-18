@@ -1,6 +1,8 @@
-package com.zeddini.yatzy;
+package com.zeddini.yatzy.impl;
 
 import java.util.Arrays;
+
+import com.zeddini.yatzy.IScoringStrategy;
 
 public class PairScoringImpl implements IScoringStrategy {
     @Override

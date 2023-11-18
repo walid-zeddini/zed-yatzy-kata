@@ -1,4 +1,6 @@
-package com.zeddini.yatzy;
+package com.zeddini.yatzy.impl;
+
+import com.zeddini.yatzy.IScoringStrategy;
 
 public class YatzyScoringImpl implements IScoringStrategy {
 
