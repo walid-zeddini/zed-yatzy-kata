@@ -31,6 +31,7 @@ The scoring system is implemented in **Java 17**, adhering to best practices in 
 - Thorough unit testing using **JUnit 5** .
 - Application of **TDD** and **BDD** methodologies.
 - **Clean code** practices and **SOLID** principles.
+- Application of **Design Pattern** such as **Strategy Pattern** **Factory Method** and **Singleton Pattern** .
 
 ## Usage
 
