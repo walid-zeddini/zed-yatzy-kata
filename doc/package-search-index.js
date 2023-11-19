@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.zeddini.yatzy"},{"l":"com.zeddini.yatzy.impl"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.zeddini.yatzy"}];updateSearchResults();
