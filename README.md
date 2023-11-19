@@ -35,7 +35,8 @@ The scoring system is implemented in **Java 17**, adhering to best practices in 
 ## Usage
 
 To score a roll, instantiate the appropriate scoring strategy class and pass an array of dice values to the `score` method.
-
+Exemple Of Chance Scoring:
+ 
 ```java
 IScoringStrategy chanceScoring = new ChanceScoringImpl();
 int score = chanceScoring.score(new int[]{1, 2, 3, 4, 5});
