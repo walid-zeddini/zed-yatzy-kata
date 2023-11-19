@@ -1,11 +1,22 @@
 package com.zeddini.yatzy;
+/*
+ * Copyright 2023 Zeddini, as indicated by the @author tags.
+ *
+ * Licensed under the zeddini License; you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.zeddini.com/licenses/LICENSE-2.0
+ *
+ * @author  Zeddini Walid
+ * @version 1.0.0
+ * @since   2023-11-19 
+ */
 
+public class YatzyScorer {
 /**
  * La classe YatzyScorer sert de contexte pour appliquer différentes stratégies de scoring dans le jeu Yatzy.
  * Elle permet de définir la stratégie de scoring à utiliser et de calculer le score pour un lancer de dés donné en fonction de cette stratégie.
  */
-public class YatzyScorer {
-
     private IScoringStrategy scoringStrategy;
 
     /**
